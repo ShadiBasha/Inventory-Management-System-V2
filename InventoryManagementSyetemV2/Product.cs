@@ -45,5 +45,15 @@ public class Product : INullable
         Price = 0;
         Quantity = 0;
     } 
-    
+    public Product(string name, int price, int quantity)
+    {
+        IsNull = false;
+        _productNumber = _numberOfProducts;
+        Name = name;
+        Price = price;
+        Quantity = quantity;
+        _numberOfProducts++;
+    }
+
+
 }
