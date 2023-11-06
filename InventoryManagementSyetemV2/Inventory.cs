@@ -13,4 +13,13 @@ public class Inventory
     {
         _storage = storage;
     }
+    
+    public bool AddAnItem(Product item)
+    {
+        if (item.IsNull)
+            return false;
+        _storage.Add(item);
+        return true;
+    }
+    
 }
