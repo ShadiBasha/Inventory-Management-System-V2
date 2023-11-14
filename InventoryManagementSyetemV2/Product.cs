@@ -2,7 +2,7 @@
 
 namespace InventoryManagementSyetemV2;
 
-public class Product : INullable
+public class Product
 {
     private static int _numberOfProducts;
     private int _productNumber;
@@ -33,13 +33,10 @@ public class Product : INullable
                 _price = value;
         }
     }
-
-    public bool IsNull { get; set; }
     
     
     public Product()
     {
-        IsNull = true;
         _productNumber = -1;
         Name = "";
         Price = 0;
@@ -47,7 +44,6 @@ public class Product : INullable
     } 
     public Product(string name, int price, int quantity)
     {
-        IsNull = false;
         _productNumber = _numberOfProducts;
         Name = name;
         Price = price;

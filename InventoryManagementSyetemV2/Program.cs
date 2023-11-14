@@ -14,20 +14,20 @@ public class Program
         Console.WriteLine("Product quantity : ");
         int quantity = Convert.ToInt32(Console.ReadLine());
         Product newProduct = new Product(name, price, quantity);
-        if (Inventory.AddAnItem(newProduct))
-        { 
+        try
+        {
+            Inventory.AddItem(newProduct);
             Console.WriteLine("----------------------------------------");
             Console.WriteLine(newProduct.ToString());
             Console.WriteLine("         Was added successfully");
             Console.WriteLine("----------------------------------------");
         }
-        else
+        catch (Exception e)
         {
             Console.WriteLine("----------------------------------------");
-            Console.WriteLine("         Error The Product is Null");
+            Console.WriteLine($"{e.Message}");
             Console.WriteLine("----------------------------------------");
         }
-
         MainPage();
     }
     

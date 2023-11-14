@@ -14,12 +14,16 @@ public class Inventory
         _storage = storage;
     }
     
-    public bool AddAnItem(Product item)
+    public void AddItem(Product? item)
     {
-        if (item.IsNull)
-            return false;
-        _storage.Add(item);
-        return true;
+        if (item == null)
+        {
+            throw new Exception("Error: the item your trying to add is null");
+        }
+        else
+        {
+            _storage.Add(item);
+        }
     }
     
 }
