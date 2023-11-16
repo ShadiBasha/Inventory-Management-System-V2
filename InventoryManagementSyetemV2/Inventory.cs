@@ -26,4 +26,14 @@ public class Inventory
         }
     }
     
+    public string ViewAllItems()
+    {
+        var allItems = "";
+        foreach (var item in _storage)
+        {
+            allItems += item + "\n";
+        }
+        return allItems;
+    }
+    
 }
