@@ -31,17 +31,31 @@ public class Program
         MainPage();
     }
     
+    public static void ViewProducts()
+    {
+        Console.WriteLine("-------------------------------------\n");
+        Console.WriteLine("Products in the inventory");
+        Console.WriteLine(Inventory.ViewAllItems());
+        Console.WriteLine("-------------------------------------");
+        Console.ReadLine();
+        MainPage();
+    }
+    
     public static void MainPage()
     {
         Console.WriteLine("Welcome to Your Inventory");
         Console.WriteLine("What do you want to do: ");
         Console.WriteLine("1. Add a product");
+        Console.WriteLine("2. View all product");
         int comand = Console.Read();
         Console.Clear();
         switch (comand)
         {
             case '1': 
                 AddAProduct();
+                break;
+            case '2': 
+                ViewProducts();
                 break;
         }
     }
