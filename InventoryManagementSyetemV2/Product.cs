@@ -51,5 +51,8 @@ public class Product
         _numberOfProducts++;
     }
 
-    
+    public override string ToString()
+    {
+        return $"{_productNumber} : Name : {Name}, Price : {Price}, Quantity: {Quantity}";
+    }
 }
