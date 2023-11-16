@@ -48,4 +48,9 @@ public class Inventory
         return allItems;
     }
     
+    public void DeleteItem(Product item)
+    {
+        _storage.Remove(item);
+    }
+    
 }
