@@ -41,6 +41,60 @@ public class Program
         MainPage();
     }
     
+    static Product GetProductByName()
+    {
+        Console.WriteLine("Please enter the name of the product");
+        Console.ReadLine();
+        string name = new string(Console.ReadLine());
+        Product product = Inventory.GetItemByName(name);
+        if (product == null)
+        {
+            Console.WriteLine("----------------------------------------");
+            Console.WriteLine("Sorry there is no product with such name");
+            Console.WriteLine("----------------------------------------");
+            MainPage();
+            return new Product();
+        }
+        return product;
+    }
+    
+    public static void EditAProduct()
+    {
+        Product productToEdit = GetProductByName();
+        if (productToEdit == null)
+        {
+            return;
+        }
+        Console.WriteLine("This is the product");
+        Console.WriteLine(productToEdit.ToString());
+        Console.WriteLine("What do you want to change?");
+        Console.WriteLine("1. The Name");
+        Console.WriteLine("2. The Price");
+        Console.WriteLine("3. The Quantity");
+        Console.WriteLine("Enter the number to continue");
+        Console.WriteLine("Enter anything else to exit");
+        int comand = Convert.ToInt32(Console.ReadLine());
+        switch (comand)
+        {
+            case 1:
+                Console.WriteLine("Enter the new Name for the product");
+                string newName = new string(Console.ReadLine());
+                productToEdit.Name = newName;
+                break;
+            case 2:
+                Console.WriteLine("Enter the new Price for the product");
+                int price = Convert.ToInt32(Console.ReadLine());
+                productToEdit.Price = price;
+                break;
+            case 3:
+                Console.WriteLine("Enter the new Quantity for the product");
+                int quantity = Convert.ToInt32(Console.ReadLine());
+                productToEdit.Quantity = quantity;
+                break;
+        }
+        MainPage();
+    }
+    
     public static void MainPage()
     {
         Console.WriteLine("Welcome to Your Inventory");
@@ -56,6 +110,9 @@ public class Program
                 break;
             case '2': 
                 ViewProducts();
+                break;
+            case '3': 
+                EditAProduct();
                 break;
         }
     }
