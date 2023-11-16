@@ -41,26 +41,26 @@ public class Program
         MainPage();
     }
     
-    static Product GetProductByName()
+    static Product? GetProductByName()
     {
         Console.WriteLine("Please enter the name of the product");
         Console.ReadLine();
         string name = new string(Console.ReadLine());
-        Product product = Inventory.GetItemByName(name);
+        Product? product = Inventory.GetItemByName(name);
         if (product == null)
         {
             Console.WriteLine("----------------------------------------");
             Console.WriteLine("Sorry there is no product with such name");
             Console.WriteLine("----------------------------------------");
             MainPage();
-            return new Product();
+            return null;
         }
         return product;
     }
     
     public static void EditAProduct()
     {
-        Product productToEdit = GetProductByName();
+        Product? productToEdit = GetProductByName();
         if (productToEdit == null)
         {
             return;
@@ -71,6 +71,7 @@ public class Program
         Console.WriteLine("1. The Name");
         Console.WriteLine("2. The Price");
         Console.WriteLine("3. The Quantity");
+        Console.WriteLine("4. Delete a product");
         Console.WriteLine("Enter the number to continue");
         Console.WriteLine("Enter anything else to exit");
         int comand = Convert.ToInt32(Console.ReadLine());
@@ -95,6 +96,20 @@ public class Program
         MainPage();
     }
     
+    static void DeleteAProduct()
+    {
+        Product? productToDelete = GetProductByName();
+        if (productToDelete == null)
+        {
+            return;
+        }
+        Inventory.DeleteItem(productToDelete);
+        Console.WriteLine("----------------------------------------");
+        Console.WriteLine(productToDelete.ToString());
+        Console.WriteLine("        Was deleted successfully");
+        Console.WriteLine("----------------------------------------");
+        MainPage();
+    }
     public static void MainPage()
     {
         Console.WriteLine("Welcome to Your Inventory");
@@ -113,6 +128,9 @@ public class Program
                 break;
             case '3': 
                 EditAProduct();
+                break;
+            case '4':
+                DeleteAProduct();
                 break;
         }
     }
