@@ -26,4 +26,31 @@ public class Inventory
         }
     }
     
+    public Product? GetItemByName(string name)
+    {
+        foreach (Product item in _storage)
+        {
+            if (item.Name.Equals(name))
+            {
+                return item;
+            }
+        }
+        return null;
+    }
+    
+    public string ViewAllItems()
+    {
+        var allItems = "";
+        foreach (var item in _storage)
+        {
+            allItems += item + "\n";
+        }
+        return allItems;
+    }
+    
+    public void DeleteItem(Product item)
+    {
+        _storage.Remove(item);
+    }
+    
 }
